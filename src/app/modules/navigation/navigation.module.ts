@@ -15,14 +15,15 @@ import { AdminListComponent } from './dummy/admin-list/admin-list.component';
 import { FormsModule} from '@angular/forms';
 import { EnquiryComponent } from './components/enquiry/enquiry.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { SpecialistComponent } from './components/specialist/specialist.component';
+import { AuthService } from '../auth/service/auth.service';
+import { AuthGuard } from 'src/app/auth.guard';
 
 @NgModule({
   declarations: [NavComponent,
     DoctorComponent, AdddoctorComponent, 
     AppointmentComponent,  
-     AdminCreateComponent,  AdminListComponent, EnquiryComponent, FeedbackComponent, LogoutComponent, SpecialistComponent],
+     AdminCreateComponent,  AdminListComponent, EnquiryComponent, FeedbackComponent, SpecialistComponent],
   imports: [
     CommonModule,
     NavigationRoutingModule,
@@ -32,9 +33,7 @@ import { SpecialistComponent } from './components/specialist/specialist.componen
    MaterialModule ,
    FormsModule
   ],
-  providers: [
-    
-]
+  providers: [AuthService ,AuthGuard],
 
 })
 export class NavigationModule { }

@@ -1,6 +1,8 @@
 <!--link for icons-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+  
 <mat-sidenav-container class="sidenav-container">
 
   <mat-sidenav #drawer class="sidenav" fixedInViewport
@@ -19,10 +21,14 @@
       <a mat-list-item routerLink="/home/enquiry">Enquiry</a>
       <a mat-list-item routerLink="/home/feedback">Feedback</a>
       <a mat-list-item routerLink="/home/speciality">Speciality</a>
+      <button mat-button *ngIf="auth.isLoggednIn()" (click)="auth.logout()">Logout</button>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content class="side-content-image">
+
+      
+
     <!-- MENU Button-->
     <mat-toolbar color="primary"> 
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
@@ -31,11 +37,7 @@
       </button>
 
       <!--Title -->
-
       <span>Admin dashboard</span>
-      <span class="logout"> 
-        <a routerLink="/home/logout"><button>logout</button></a> </span>
-
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

@@ -6,6 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { NavigationModule } from '../navigation/navigation.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './service/auth.service';
+import { AuthGuard } from 'src/app/auth.guard';
 
 
 @NgModule({
@@ -18,8 +20,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule     
   ],
-  providers: [
-    
-]
+  providers: [AuthService ,AuthGuard],
 })
 export class AuthModule { }
