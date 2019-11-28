@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private baseUrl ='http://localhost:1234/api/patientregister/validation';
+  private baseUrl ='http://localhost:9081/api/admins/validation';
 
   constructor(private http: HttpClient) { }
 
