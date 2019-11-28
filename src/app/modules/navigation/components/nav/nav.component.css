@@ -21,3 +21,9 @@
 .side-content-image{
   background-image:url('../../../../images/doc-1.jpg');
 }
+
+.logout{
+  position: fixed;
+  top: 0;
+  right: 0;
+}

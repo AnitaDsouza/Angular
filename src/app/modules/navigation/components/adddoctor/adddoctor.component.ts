@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { DoctorService } from '../../services/doctor.service';
+import { Doctor } from '../../models/doctor';
+import { Speciality } from '../../models/speciality';
+import { Observable } from 'rxjs';
+import { SpecialityService } from '../../services/speciality.service';
 
 @Component({
   selector: 'app-adddoctor',
@@ -8,24 +13,71 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./adddoctor.component.css']
 })
 export class AdddoctorComponent implements OnInit {
-  isLinear = false;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  selectedGender: string;
-  genders: string[] = ['female', 'male']
+  specialists: Observable<Speciality[]>;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private doctorService:DoctorService,private _formBuilder: FormBuilder 
+    , private  specialistService:SpecialityService) {}
 
   
+   
   ngOnInit() {
+
+    this.reloadData(); 
+     
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstName: ['', Validators.required],
+      lastName:['', Validators.required],
+      gender:['', Validators.required],
+     
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      specaility: ['', Validators.required],
+      branch: ['', Validators.required],
+      fee: ['', Validators.required],
+    //  specailityd: ['', Validators.required]
     });
+
+    
+     
+    
   }
+
+  reloadData(){
+    this.specialistService.getAllSpecialistNames().subscribe(data =>{this.specialists=data} 
+    ,  error => console.log(error));
+  }
+
+
   
+  saveDoctor(){
+
+
+    let firstName = this.firstFormGroup.controls['firstName'].value;
+    let lastName = this.firstFormGroup.controls['lastName'].value;
+    let gender = this.firstFormGroup.controls['gender'].value;
+
+    
+    let specaility = this.secondFormGroup.controls['specaility'].value;
+    let branch = this.secondFormGroup.controls['branch'].value;
+    let fee = this.secondFormGroup.controls['fee'].value;
+
+
+    let doctor = new Doctor(firstName , lastName , gender , fee , specaility , branch);
+    console.log(doctor);
+    this.doctorService.createDoctor(doctor).subscribe(data => console.log(data) 
+    ,  error => console.log(error))
+  }
+
+  form1(){
+    console.log(this.firstFormGroup.value);
+  }
+
+  form2(){
+    console.log(this.secondFormGroup.value);
+  }
 
 }

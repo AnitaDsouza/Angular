@@ -13,10 +13,12 @@
     <!-- Menu -->
 
     <mat-nav-list>
-      <a  mat-list-item  routerLink="/home/dashboard"> <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
       <a mat-list-item routerLink="/home/doctor"> <i class="fa fa-fw fa-user" aria-hidden="true" ></i> Doctor</a>
       <a mat-list-item routerLink="/home/appointment"><i class="fa fa-calendar" aria-hidden="true"></i>Appointment</a>
-      <a mat-list-item routerLink="/home/payment"><i class="fa fa-credit-card"></i>Payment</a>
+      <a mat-list-item routerLink="/home/admins"><i class="fa fa-credit-card"></i>Admin</a>
+      <a mat-list-item routerLink="/home/enquiry">Enquiry</a>
+      <a mat-list-item routerLink="/home/feedback">Feedback</a>
+      <a mat-list-item routerLink="/home/speciality">Speciality</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -31,6 +33,8 @@
       <!--Title -->
 
       <span>Admin dashboard</span>
+      <span class="logout"> 
+        <a (click)="logout()">Logout</a> </span>
 
     </mat-toolbar>
     <!-- Add Content Here -->

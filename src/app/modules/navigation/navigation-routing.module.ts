@@ -1,29 +1,30 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { TableComponent } from './components/table/table.component';
-import { DragdropComponent } from './components/dragdrop/dragdrop.component';
-import { AddressComponent } from './components/address/address.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { AdddoctorComponent } from './components/adddoctor/adddoctor.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
-import { AddappointmentComponent } from './components/addappointment/addappointment.component';
-import { PaymentComponent } from './components/payment/payment.component';
+import { AdminListComponent } from './dummy/admin-list/admin-list.component';
+import { AdminCreateComponent } from './dummy/admin-create/admin-create.component';
+import { EnquiryComponent } from './components/enquiry/enquiry.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { SpecialistComponent } from './components/specialist/specialist.component';
 
 
 const routes: Routes = [
   {path:'' , component:NavComponent,
   children: [
-  { path:'dashboard', component:DashboardComponent },
-  {path:'table' , component:TableComponent},
-  {path:'dragdrop', component:DragdropComponent},
-  {path:'address' , component:AddressComponent},
+
   {path:'doctor' , component:DoctorComponent},
   {path:'addDoctor' , component:AdddoctorComponent},
   {path:'appointment' , component:AppointmentComponent},
-  {path:'addAppointment' , component:AddappointmentComponent},
-  {path:'payment' , component:PaymentComponent}
+  { path:'admins', component: AdminListComponent },
+  { path:'addAdmin', component: AdminCreateComponent },
+  {path:'enquiry' , component:EnquiryComponent},
+  {path:'feedback' , component:FeedbackComponent},
+  {path:'logout' , component:LogoutComponent},
+  {path:'speciality' , component:SpecialistComponent}
   ]
 }
 ];

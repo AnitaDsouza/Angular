@@ -5,46 +5,36 @@ import { MaterialModule } from '../../material.module';
 import { NavigationRoutingModule } from './navigation-routing.module';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { TableComponent } from './components/table/table.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { DragdropComponent } from './components/dragdrop/dragdrop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { AddressComponent } from './components/address/address.component';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { AdddoctorComponent } from './components/adddoctor/adddoctor.component';
-import { PaymentComponent } from './components/payment/payment.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
-import { AddappointmentComponent } from './components/addappointment/addappointment.component';
-
+import { AdminCreateComponent } from './dummy/admin-create/admin-create.component';
+import { AdminListComponent } from './dummy/admin-list/admin-list.component';
+import { FormsModule} from '@angular/forms';
+import { EnquiryComponent } from './components/enquiry/enquiry.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { SpecialistComponent } from './components/specialist/specialist.component';
 
 @NgModule({
-  declarations: [NavComponent, DashboardComponent, TableComponent, DragdropComponent, AddressComponent, DoctorComponent, AdddoctorComponent, PaymentComponent, AppointmentComponent, AddappointmentComponent],
+  declarations: [NavComponent,
+    DoctorComponent, AdddoctorComponent, 
+    AppointmentComponent,  
+     AdminCreateComponent,  AdminListComponent, EnquiryComponent, FeedbackComponent, LogoutComponent, SpecialistComponent],
   imports: [
     CommonModule,
     NavigationRoutingModule,
     LayoutModule,
-   
     DragDropModule,
+  ReactiveFormsModule,
+   MaterialModule ,
+   FormsModule
+  ],
+  providers: [
     
-    ReactiveFormsModule,
-   MaterialModule 
-  
+]
 
-  ]
 })
 export class NavigationModule { }
