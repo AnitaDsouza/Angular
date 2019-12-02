@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EnquiryService } from '../../services/enquiry.service';
 import { Enquiry } from '../../models/enquiry';
 import { Observable } from 'rxjs';
+import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-enquiry',
@@ -11,11 +12,17 @@ import { Observable } from 'rxjs';
 export class EnquiryComponent implements OnInit {
 
   enquirys: Observable<Enquiry[]>;
+  firstFormGroup: FormGroup;
+  _formBuilder: any;
 
   constructor(private enquiryService: EnquiryService) { }
 
   ngOnInit() {
     this.reloadData();
+
+    this.firstFormGroup = this._formBuilder.group({
+      enquiryResponse: ['', Validators.required]
+    });
   };
 
   reloadData(){
@@ -31,6 +38,15 @@ export class EnquiryComponent implements OnInit {
           this.reloadData();
         },
         error => console.log(error));
+  }
+
+  sendResponse(id:number){
+    let enquiryResponse = this.firstFormGroup.controls['enquiryResponse'].value;
+    this.enquiryService.sendResponse(enquiryResponse , id ).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => console.log(error));
   }
 
 

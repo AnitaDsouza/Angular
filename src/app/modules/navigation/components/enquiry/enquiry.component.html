@@ -15,6 +15,7 @@
                 <th scope="col">Mail Id</th>
                 <th scope="col">Branch</th>
                 <th scope="col">Message</th>
+                <th scope="col"> Respond </th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -25,6 +26,21 @@
                     <td>{{enquiry.email}}</td>
                     <td>{{enquiry.branch}}</td>
                     <td> {{enquiry.message }}</td>
+                    <td> 
+                        <div class="form-popup" id="myForm">
+                            <form  [formGroup]="firstFormGroup" (ngSubmit)="sendResponse()" #formone="ngForm" class="form-container">
+                              
+                              <label for="email"><b>Response</b></label>
+                              <input type="text" placeholder="Enter Email" formControlName="enquiryResponse" required>
+                          
+                             
+                              <button type="submit" class="btn">Login</button>
+                              <button type="submit" class="btn cancel" (click)="closeForm()">Close</button>
+                            </form>
+                          </div>
+
+
+                    </td>
                     <td><button  (click)="deleteEnquiry(enquiry.enquiry_id)" class="btn btn-default"> <i class="fa fa-trash" aria-hidden="true"></i></button></td>
                 </tr>
               

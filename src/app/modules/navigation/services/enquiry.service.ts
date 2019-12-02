@@ -31,4 +31,8 @@ export class EnquiryService {
     return this.http.get(`${this.baseUrl}`);
   }
 
+  sendResponse(response: String , id: number ): Observable<object> {
+    return this.http.post(`http://localhost:9006/sendSimpleEmail/${id}/${response}` , id );
+  }
+
 }
